@@ -9,7 +9,7 @@
         Name="window"
         mc:Ignorable="d"
         Title="论文消除换行在线翻译工具" Height="450" Width="800"
-        Opacity="0.9">
+        >
     <Grid Margin="0,0,2,-512" RenderTransformOrigin="0.504,0.617">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>

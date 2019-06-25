@@ -39,12 +39,18 @@ namespace lwtool
                 string result = "";
                 string url = "https://translate.google.cn/translate_a/single?client=gtx&sl=en&tl=zh-CN&dt=t&q=" + text;
                 string jsonData = GetInfo(url);
+                //return jsonData;
                 string pattern = "\"([^\"]*)\"";
                 int count = Regex.Matches(jsonData, pattern).Count;
                 MatchCollection matches = Regex.Matches(jsonData, pattern);
                 for (int i = 0; i < count - 1; i += 2)
                 {
-                    result += matches[i].Value.Trim().Replace("\"", "");
+                    //result += matches[i].Value.Trim('\"');
+                    //result+="\n";
+                    if (matches[i].Value.Trim('\"') == "2876b4f2653853cee22abadb2a855b9a")
+                        continue;
+                    else
+                        result += matches[i].Value.Trim().Replace("\"", "");
                 }
 
 
@@ -115,7 +121,7 @@ namespace lwtool
             //HandWhiteTarans ht = new HandWhiteTarans();
             //t = ht.TranslateEnglishToChinese(lines);
             //TextBox1.Text = t;
-
+            //TextBox1.Text = lines;
             TextBox1.Text = googleTranslation(lines);
             TextBox1.Focus();
 
