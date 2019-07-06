@@ -28,6 +28,17 @@ namespace lwtool
     /// </summary>
     public partial class MainWindow : Window
     {
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MouseDown += delegate { DragMove(); };
+        }
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
+        }
         public static string googleTranslation(string text)
         {
             if (text == "" || text == null)
@@ -155,6 +166,11 @@ namespace lwtool
                 TextBox1.Focus();
                 //TextBox1.Select(5, 0);
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
